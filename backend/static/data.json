@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  },
+  {
+    "id": 2,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  },
+  {
+    "id": 3,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  },
+  {
+    "id": 4,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  },
+  {
+    "id": 5,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  },
+  {
+    "id": 6,
+    "productName": "Lorem",
+    "productDescription": "Ipsum",
+    "cart_counter": 0
+  }
+]
