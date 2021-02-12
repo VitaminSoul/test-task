@@ -1,21 +1,23 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import SideBar from '../components/SideBarComponents/SideBar';
-import * as actions from '../actions/filter';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import SideBar from "../components/SideBarComponents/SideBar";
+import * as actions from "../actions/app";
 
-const mapStateToProps = ({ appReducer: { price, rating, likes, filteredBy} }) => {
+const mapStateToProps = ({
+  appReducer: { price, rating, likes, setFilter },
+}) => {
   return {
-    price, 
+    price,
     rating,
-    likes, 
-    filteredBy
-  }
-}
+    likes,
+    setFilter,
+  };
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    ...bindActionCreators(actions, dispatch)
-  }
-}
+    ...bindActionCreators(actions, dispatch),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

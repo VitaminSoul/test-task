@@ -1,13 +1,20 @@
-import API from '../API';
+import API from "../API";
 
 export function setDataThunk() {
-  return dispatch => {
-    const api = new API;
-    
-    dispatch({ type: 'DATA_IS_FETCHING' });
-    api.getData().then( data => {
+  return (dispatch) => {
+    const api = new API();
+
+    dispatch({ type: "DATA_IS_FETCHING" });
+    api.getData().then((data) => {
       console.log(data);
-      dispatch({ type: 'SET_DATA', payload: data })
-    })
-  }
-} 
+      dispatch({ type: "SET_DATA", payload: data });
+    });
+  };
+}
+
+export const setFilter = (filter) => {
+  return {
+    type: "FILTER_BY",
+    payload: filter,
+  };
+};
