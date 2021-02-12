@@ -24,8 +24,7 @@ export default class myCard extends Component {
   }
 
   render() {
-    const { id, price, addToCart, productName, productDescription, productImage, imageRdy, cart_counter } = this.props;
-    console.log(price)
+    const { id, price, rating, likes, addToCart, productName, productDescription, productImage, imageRdy, cart_counter } = this.props;
     return (
         <Card link>
           {
@@ -42,7 +41,11 @@ export default class myCard extends Component {
             </Card.Header>
             <Card.Meta>
               <h4>price: {price}</h4>
-              <Rating icon='star' defaultRating={3} maxRating={4} />
+              <Rating icon='star' defaultRating={rating} maxRating={5} />
+              
+            </Card.Meta>
+            <Card.Meta>
+              <Icon name="like" /> {likes}
             </Card.Meta>
             <Card.Description>
               {productDescription}

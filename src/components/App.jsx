@@ -1,23 +1,18 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import { Grid, Container, Segment } from 'semantic-ui-react';
-import { Route, Link } from 'react-router-dom';
-import './app.scss';
+import React, { Component } from "react";
+import axios from "axios";
+import { Grid, Container, Segment } from "semantic-ui-react";
+import { Route, Link } from "react-router-dom";
+import "./app.scss";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
-
-import Menu from '../containers/Menu';
-import Sidebar from '../containers/SideBar';
-import Carousel from './carousel/Carousel';
-import ProductPage from './productPage/ProductPage';
-import Footer from './Footer/Footer';
-import Content from '../containers/Content';
-
-
-
+import Menu from "../containers/Menu";
+import Sidebar from "../containers/SideBar";
+import Carousel from "./carousel/Carousel";
+import ProductPage from "./productPage/ProductPage";
+import Footer from "./Footer/Footer";
+import Content from "../containers/Content";
 
 export default class App extends Component {
-
   componentDidMount() {
     this.props.setDataThunk();
   }
@@ -38,49 +33,49 @@ export default class App extends Component {
       { id: 11 },
       { id: 12 },
       { id: 13 },
-    ]
+    ];
     return (
       <div>
-<Container style={{
-        width: "1620px",
-      }}>
-        <Menu />
+        <Container
+          style={{
+            width: "1620px",
+          }}
+        >
+          <Menu />
 
-        <Route path="/" exact>
-          <Grid>
-            <Grid.Row columns={2}>
-              <Grid.Column width={2}>
-                <Segment ><Sidebar /></Segment>
-              </Grid.Column>
-              <Grid.Column widescreen={14} textAlign="center">
-                <Segment><Carousel /></Segment>
-
-                
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row columns={2}>
-              <Grid.Column widescreen={14} floated='right'>
-                <Segment>
-                  {isReady ? <Content ids={temp} /> : null}
-                </Segment>
-              </Grid.Column>
-            </Grid.Row>
-            {/* <Grid.Row columns={1}>
+          <Route path="/" exact>
+            <Grid>
+              <Grid.Row columns={2}>
+                <Grid.Column width={2}>
+                  <Segment>
+                    <Sidebar />
+                  </Segment>
+                </Grid.Column>
+                <Grid.Column widescreen={14} textAlign="center">
+                  <Segment>
+                    <Carousel />
+                  </Segment>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row columns={2}>
+                <Grid.Column widescreen={14} floated="right">
+                  <Segment>{isReady ? <Content ids={temp} /> : null}</Segment>
+                </Grid.Column>
+              </Grid.Row>
+              {/* <Grid.Row columns={1}>
               <Grid.Column>
                 
               </Grid.Column>
             </Grid.Row> */}
-          </Grid>
-        </Route>
-        <Route path="/product/:id">
-          <ProductPage />
-        </Route>
-      </Container>
-      
+            </Grid>
+          </Route>
+          <Route path="/product/:id">
+            <ProductPage />
+          </Route>
+        </Container>
+
         <Footer />
-      
       </div>
-      
-    )
+    );
   }
 }

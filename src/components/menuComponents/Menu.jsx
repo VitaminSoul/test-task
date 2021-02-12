@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Menu, Container, List, Image, Icon, Button, Visibility, Form, Popup, Checkbox } from 'semantic-ui-react';
+import { Menu, Container, List, Image, Icon, Button, Visibility, Form, Popup, Checkbox, Accordion } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-import Search from './SerchBar';
+import Search from '../../containers/SearchBar';
 import ShoppingCart from '../../containers/ShoppingCart';
 import SignUp from '../../containers/SignUp';
 import WishList from '../../containers/WishList';
@@ -66,6 +66,7 @@ export default class AppMenu extends Component {
                 <Icon name="truck" size="large" />
               </Link>
             </Menu.Item>
+
             <Menu.Item style={{ "width": '450px' }}>
               <Search />
             </Menu.Item>

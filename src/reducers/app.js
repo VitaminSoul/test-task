@@ -1,7 +1,8 @@
 const initState = {
   data: [],
   isReady: false,
-  filteredBy: 'all'
+  filteredBy: 'all',
+  searchBy: ''
 }
 
 export default (state = initState, action) => {
@@ -20,7 +21,7 @@ export default (state = initState, action) => {
         ]
       }
     case 'SET_IMG': 
-      const {cart_counter, id, productDescription, productName, price, rating, reviews, comments, isAvailible } = state.data.find(o => o.id === action.id)
+      const { likes, cart_counter, id, productDescription, productName, price, rating, reviews, comments, isAvailible } = state.data.find(o => o.id === action.id)
       return {
         ...state,
         data: [
@@ -36,7 +37,8 @@ export default (state = initState, action) => {
             rating, 
             reviews, 
             comments, 
-            isAvailible
+            isAvailible,
+            likes
           }
         ]
       }
@@ -44,6 +46,11 @@ export default (state = initState, action) => {
       return {
         ...state,
         filteredBy: action.payload
+      }  
+    case 'SET_SEARCH_QUERY':
+      return {
+        ...state,
+        searchBy: action.payload
       }  
 
     default:

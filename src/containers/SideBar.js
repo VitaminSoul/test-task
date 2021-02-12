@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import SideBar from '../components/SideBarComponents/SideBar';
 import * as actions from '../actions/filter';
 
-const mapStateToProps = ({ appReducer: {price, rating} }) => {
+const mapStateToProps = ({ appReducer: { price, rating, likes, filteredBy} }) => {
   return {
     price, 
-    rating
+    rating,
+    likes, 
+    filteredBy
   }
 }
 
