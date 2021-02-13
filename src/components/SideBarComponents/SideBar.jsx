@@ -1,6 +1,5 @@
 import React from "react";
 import { Menu, Icon } from "semantic-ui-react";
-import faker from "faker";
 
 export default (props) => {
   const { setFilter, filteredBy } = props;

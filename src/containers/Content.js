@@ -24,9 +24,7 @@ import _ from "lodash";
 //   }
 // };
 
-const mapStateToProps = ({
-  appReducer: { data, isReady, filteredBy, searchBy },
-}) => {
+const mapStateToProps = ({ appReducer: { data, isReady, searchBy } }) => {
   return {
     data,
     isReady,

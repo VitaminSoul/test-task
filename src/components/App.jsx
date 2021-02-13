@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Grid, Container, Segment } from "semantic-ui-react";
-import { Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "./app.scss";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
@@ -42,7 +41,6 @@ export default class App extends Component {
           }}
         >
           <Menu />
-
           <Route path="/" exact>
             <Grid>
               <Grid.Row columns={2}>
@@ -62,18 +60,12 @@ export default class App extends Component {
                   <Segment>{isReady ? <Content ids={temp} /> : null}</Segment>
                 </Grid.Column>
               </Grid.Row>
-              {/* <Grid.Row columns={1}>
-              <Grid.Column>
-                
-              </Grid.Column>
-            </Grid.Row> */}
             </Grid>
           </Route>
           <Route path="/product/:id">
             <ProductPage />
           </Route>
         </Container>
-
         <Footer />
       </div>
     );

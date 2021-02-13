@@ -1,25 +1,19 @@
 import API from "../API";
 
-export const addToCart = (id) => {
-  return {
-    type: "ADD_TO_CART",
-    payload: id,
-  };
-};
+export const addToCart = (id) => ({
+  type: "ADD_TO_CART",
+  payload: id,
+});
 
-export const like = (id) => {
-  return {
-    type: "LIKE",
-    payload: id,
-  };
-};
+export const like = (id) => ({
+  type: "LIKE",
+  payload: id,
+});
 
-export const dislike = (id) => {
-  return {
-    type: "DISLIKE",
-    payload: id,
-  };
-};
+export const dislike = (id) => ({
+  type: "DISLIKE",
+  payload: id,
+});
 
 export const getImg = (id) => (dispatch) => {
   const api = new API();

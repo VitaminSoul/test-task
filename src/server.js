@@ -332,7 +332,7 @@ app.get("/data", (req, res) => {
 //   productName: "Product 11",
 //   productDescription: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
 //   cart_counter: 0,
-//   rating: 4,
+//   rating: 4,s
 //   price: 1100,
 //   reviews: 15,
 //   comments: 12,

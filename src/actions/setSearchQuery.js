@@ -1,6 +1,4 @@
-export const setSearchQuery = query => {
-  return {
-    type: 'SET_SEARCH_QUERY',
-    payload: query
-  }
-}
+export const setSearchQuery = (query) => ({
+  type: "SET_SEARCH_QUERY",
+  payload: query,
+});

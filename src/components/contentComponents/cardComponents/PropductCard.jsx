@@ -2,18 +2,6 @@ import React, { Component } from "react";
 import { Card, Button, Image, Loader, Rating, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-// const Loading = () => {
-//   return (
-//     <Card>
-//       <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='big' />
-//       <Card.Content>
-//         <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-//       </Card.Content>
-//     </Card>
-//   );
-
-// }
-
 export default class myCard extends Component {
   constructor() {
     super();
