@@ -1,23 +1,21 @@
-import { connect }from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import App from '../components/App';
-import { setDataThunk } from '../actions/app';
-
+import App from "../components/App";
+import { setDataThunk } from "../actions/app";
 
 const mapStateToProps = ({ appReducer: { data, isReady } }) => {
   return {
     data,
-    isReady
-  }
-}
+    isReady,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setDataThunk: () => dispatch(setDataThunk()),
-  }
-}
-
+  };
+};
 
 // const data = [
 //   { id: 1, productName: "Lorem1", productDescription: "ipsum1", productImage: null, imageRdy: false },
@@ -38,4 +36,4 @@ const mapDispatchToProps = (dispatch) => {
 //   { id: 16, productName: "Lorem16", productDescription: "ipsum16", productImage: null, imageRdy: false }
 // ]
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

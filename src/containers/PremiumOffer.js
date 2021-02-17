@@ -1,13 +1,13 @@
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import PremiumOffer from '../components/menuComponents/PreminumComponents/PreminumOffer';
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import PremiumOffer from "../components/menuComponents/PreminumComponents/PreminumOffer";
 
 const mapStateToProps = () => {
-  return {}
-}
+  return {};
+};
 
 const mapDispatchToProps = () => {
-  return {}
-}
+  return {};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PremiumOffer);

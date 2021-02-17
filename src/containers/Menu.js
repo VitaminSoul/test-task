@@ -1,14 +1,13 @@
-import { connect }from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Menu from '../components/menuComponents/Menu';
-
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import Menu from "../components/menuComponents/Menu";
 
 const mapStateToProps = () => {
-  return {}
-}
+  return {};
+};
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
-}
+  return {};
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
