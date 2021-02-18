@@ -54,24 +54,26 @@ export default (state = initState, action) => {
         ],
       };
     case "FILTER_BY":
-      console.log("FILTER_BY");
-
-      switch (action.payload) {
-        case "all":
-          return {
-            ...state,
-          };
-        case "reversedByAlphabet":
-          return {
-            ...state,
-            data: _.sortBy(state.data, (i) => i.productName).reverse(),
-          };
-        default:
-          return {
-            ...state,
-            data: _.sortBy(state.data, (i) => i[action.payload]),
-          };
-      }
+      return {
+        ...state,
+        filteredBy: action.payload,
+      };
+    // switch (action.payload) {
+    //   case "all":
+    //     return {
+    //       ...state,
+    //     };
+    //   case "reversedByAlphabet":
+    //     return {
+    //       ...state,
+    //       data: _.sortBy(state.data, (i) => i.productName).reverse(),
+    //     };
+    //   default:
+    //     return {
+    //       ...state,
+    //       data: _.sortBy(state.data, (i) => i[action.payload]),
+    //     };
+    // }
     case "SET_SEARCH_QUERY":
       return {
         ...state,

@@ -9,6 +9,7 @@ export default class myCard extends Component {
       like: null,
       isLiked: false,
       color: "grey",
+      rate: null,
     };
   }
 
@@ -18,6 +19,21 @@ export default class myCard extends Component {
       like: likes,
     });
     getImg(id);
+  }
+
+  componentDidUpdate() {
+    // const { likes, rating } = this.props;
+    // this.setState({
+    //   like: likes,
+    //   rate: rating,
+    // });
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const { rating, likes } = this.props;
+    return rating !== nextProps.rating || likes !== nextProps.likes
+      ? true
+      : false;
   }
 
   render() {
@@ -55,7 +71,12 @@ export default class myCard extends Component {
               {price}
               <Icon name="dollar" />
             </h4>
-            <Rating icon="star" defaultRating={rating} maxRating={5} />
+            <Rating
+              icon="star"
+              defaultRating={0}
+              rating={rating}
+              maxRating={5}
+            />
             <Icon name="comment" /> {comments}{" "}
             <Icon
               name="like"
@@ -74,7 +95,7 @@ export default class myCard extends Component {
                     });
               }}
             />{" "}
-            {this.state.like}
+            {likes}
           </Card.Meta>
           <Card.Meta>{productDescription}</Card.Meta>
         </Card.Content>
@@ -87,7 +108,14 @@ export default class myCard extends Component {
             }}
             content={cart_counter}
           >
-            <Button.Content visible style={{ width: "185px" }}>
+            <Button.Content
+              visible
+              fluid
+              style={{
+                maxWidth: "185px",
+                minWidth: "50px",
+              }}
+            >
               <Icon name="dollar" />
             </Button.Content>
             <Button.Content hidden>

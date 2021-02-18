@@ -9,10 +9,10 @@ import {
   Segment,
   Item,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 
 const CartItem = (props) => {
   const {
+    cart_counter,
     productName,
     productDescription,
     productImage,
@@ -28,6 +28,9 @@ const CartItem = (props) => {
           <Item.Header>{productName}</Item.Header>
           <Item.Meta>
             <span className="price">{price}</span>
+          </Item.Meta>
+          <Item.Meta>
+            <span className="total">{cart_counter}</span>
           </Item.Meta>
           <Item.Extra>
             <Button
