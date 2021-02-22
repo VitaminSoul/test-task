@@ -5,13 +5,15 @@ import ProductCard from "../components/contentComponents/cardComponents/Propduct
 import * as actions from "../actions/produtCard";
 
 const mapStateToProps = ({
-  appReducer: { data, imgData },
+  appReducer: { data, imgData, likes, images },
   cartReducer: { cartItems },
 }) => {
   return {
     data,
     imgData,
     cartItems,
+    likes,
+    images,
   };
 };
 

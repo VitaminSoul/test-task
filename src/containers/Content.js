@@ -31,7 +31,7 @@ const productSearch = (data, query) => {
 const mapStateToProps = ({
   appReducer: { data, isReady, searchBy, filteredBy },
 }) => {
-  console.log("sorted by name", _.sortBy(data, "productName"));
+  console.log("sorted by", filteredBy, _.sortBy(data, filteredBy));
   return {
     data: _.sortBy(productSearch(data, searchBy) || data, (i) => i[filteredBy]),
     isReady,

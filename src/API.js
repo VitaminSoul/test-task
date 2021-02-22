@@ -10,8 +10,13 @@ export default class API {
         return data;
       });
 
-  getImg = () =>
-    axios
-      .get("https://picsum.photos/290/290", { responseType: "blob" })
-      .then((img) => img);
+  getImg = async () => {
+    const img = axios
+      .get("https://picsum.photos/290/290", {
+        responseType: "blob",
+      })
+      .then((data) => data);
+
+    return img;
+  };
 }

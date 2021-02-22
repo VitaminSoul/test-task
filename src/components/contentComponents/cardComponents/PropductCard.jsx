@@ -1,55 +1,25 @@
 import React, { Component } from "react";
-import { Card, Button, Image, Loader, Rating, Icon } from "semantic-ui-react";
+import { Card, Button, Image, Loader, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-export default class myCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      like: null,
-      isLiked: false,
-      color: "grey",
-      rate: null,
-    };
-  }
+import RatingComponent from "../../../containers/RatingContainer";
+import LikesComponent from "../../../containers/LikesContainer";
+import CommentsContainer from "../../../containers/CommentsContainer";
 
+export default class myCard extends Component {
   componentDidMount() {
-    const { getImg, id, likes } = this.props;
-    this.setState({
-      like: likes,
-    });
+    const { getImg, id } = this.props;
     getImg(id);
   }
 
-  componentDidUpdate() {
-    // const { likes, rating } = this.props;
-    // this.setState({
-    //   like: likes,
-    //   rate: rating,
-    // });
-  }
-
-  shouldComponentUpdate(nextProps) {
-    const { rating, likes } = this.props;
-    return rating !== nextProps.rating || likes !== nextProps.likes
-      ? true
-      : false;
-  }
+  handleAddToCart = () => {
+    const { addToCart, id } = this.props;
+    addToCart(id);
+  };
 
   render() {
-    const {
-      id,
-      price,
-      rating,
-      likes,
-      addToCart,
-      productName,
-      productDescription,
-      productImage,
-      imageRdy,
-      cart_counter,
-      comments,
-    } = this.props;
+    const { id, price, productName, productDescription, images } = this.props;
+    const { imageRdy, productImage } = images.find((o) => o.id === id);
     return (
       <Card link>
         {imageRdy ? (
@@ -71,31 +41,9 @@ export default class myCard extends Component {
               {price}
               <Icon name="dollar" />
             </h4>
-            <Rating
-              icon="star"
-              defaultRating={0}
-              rating={rating}
-              maxRating={5}
-            />
-            <Icon name="comment" /> {comments}{" "}
-            <Icon
-              name="like"
-              color={this.state.color}
-              onClick={() => {
-                !this.state.isLiked
-                  ? this.setState({
-                      like: this.state.like + 1,
-                      color: "red",
-                      isLiked: true,
-                    })
-                  : this.setState({
-                      like: this.state.like - 1,
-                      color: "grey",
-                      isLiked: false,
-                    });
-              }}
-            />{" "}
-            {likes}
+            <RatingComponent id={id} />
+            <CommentsContainer id={id} />
+            <LikesComponent id={id} />
           </Card.Meta>
           <Card.Meta>{productDescription}</Card.Meta>
         </Card.Content>
@@ -104,13 +52,11 @@ export default class myCard extends Component {
           <Button
             animated="fade"
             onClick={() => {
-              addToCart(id);
+              this.handleAddToCart();
             }}
-            content={cart_counter}
           >
             <Button.Content
               visible
-              fluid
               style={{
                 maxWidth: "185px",
                 minWidth: "50px",
