@@ -1,210 +1,35 @@
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
+const { MongoClient } = require("mongodb");
 
 const app = express();
+const uri =
+  "mongodb://localhost:27017/?readPreference=primary&appname=myApp&ssl=false";
+
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const runMongo = async () => {
+  try {
+    await client.connect();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+runMongo();
+
 app.options("*", cors());
-app.get("/data", (req, res) => {
+
+app.get("/data", async (req, res) => {
   res.type("json");
   res.header("Access-Control-Allow-Origin", "*");
-
-  res.json([
-    {
-      id: 1,
-      productName: "Product 1",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 1,
-      price: 170,
-      reviews: 15,
-      comments: 9,
-      isAvailible: true,
-      likes: 11,
-      isLiked: false,
-    },
-    {
-      id: 2,
-      productName: "Product 2",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 5,
-      price: 105,
-      reviews: 15,
-      comments: 31,
-      isAvailible: true,
-      likes: 2,
-      isLiked: false,
-    },
-    {
-      id: 3,
-      productName: "Product 3",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 540,
-      reviews: 15,
-      comments: 18,
-      isAvailible: false,
-      likes: 77,
-    },
-    {
-      id: 4,
-      productName: "Product 4",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 5,
-      price: 400,
-      reviews: 15,
-      comments: 26,
-      isAvailible: true,
-      likes: 110,
-      isLiked: false,
-    },
-    {
-      id: 5,
-      productName: "Product 5",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 5,
-      price: 800,
-      reviews: 15,
-      comments: 11,
-      isAvailible: true,
-      likes: 37,
-      isLiked: false,
-    },
-    {
-      id: 6,
-      productName: "Product 6",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 3,
-      price: 400,
-      reviews: 15,
-      comments: 5,
-      isAvailible: true,
-      likes: 25,
-      isLiked: false,
-    },
-    {
-      id: 7,
-      productName: "Product 7",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 2,
-      price: 150,
-      reviews: 15,
-      comments: 2,
-      isAvailible: true,
-      likes: 19,
-      isLiked: false,
-    },
-    {
-      id: 8,
-      productName: "Product 8",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 1,
-      price: 50,
-      reviews: 15,
-      comments: 10,
-      isAvailible: false,
-      likes: 58,
-      isLiked: false,
-    },
-    {
-      id: 9,
-      productName: "Product 9",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 900,
-      reviews: 15,
-      comments: 16,
-      isAvailible: true,
-      likes: 1,
-      isLiked: false,
-    },
-    {
-      id: 10,
-      productName: "Product 10",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 750,
-      reviews: 15,
-      comments: 48,
-      isAvailible: false,
-      likes: 141,
-      isLiked: false,
-    },
-    {
-      id: 11,
-      productName: "Product 11",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 1100,
-      reviews: 15,
-      comments: 12,
-      isAvailible: true,
-      likes: 113,
-      isLiked: false,
-    },
-    {
-      id: 12,
-      productName: "Product 12",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 750,
-      reviews: 15,
-      comments: 0,
-      isAvailible: false,
-      likes: 16,
-      isLiked: false,
-    },
-    {
-      id: 13,
-      productName: "Product 13",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 4,
-      price: 315,
-      reviews: 15,
-      comments: 100,
-      isAvailible: true,
-      likes: 61,
-      isLiked: false,
-    },
-    {
-      id: 14,
-      productName: "Product 14",
-      productDescription:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
-      cart_counter: 0,
-      rating: 3,
-      price: 255,
-      reviews: 15,
-      comments: 300,
-      isAvailible: false,
-      likes: 42,
-      isLiked: false,
-    },
-  ]);
+  const database = client.db("storedb");
+  const cursor = database.collection("all").find();
+  let resultArr = await cursor.toArray();
+  res.json(resultArr);
 });
 
 // {

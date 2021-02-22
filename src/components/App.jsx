@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Container, Segment } from "semantic-ui-react";
+import { Grid, Container, Segment, Pagination } from "semantic-ui-react";
 import { Route } from "react-router-dom";
 import "./app.scss";
 import "pure-react-carousel/dist/react-carousel.es.css";
@@ -59,7 +59,24 @@ export default class App extends Component {
                 <Grid.Column widescreen={14} floated="right">
                   <Segment>{isReady ? <Content ids={temp} /> : null}</Segment>
                 </Grid.Column>
+
+                <Grid.Column widescreen={14} floated="right" textAlign="center">
+                  <Segment>
+                    <Pagination
+                      boundaryRange={0}
+                      defaultActivePage={1}
+                      ellipsisItem={null}
+                      firstItem={null}
+                      lastItem={null}
+                      siblingRange={1}
+                      totalPages={10}
+                    />
+                  </Segment>
+                </Grid.Column>
               </Grid.Row>
+              {/* <Grid.Row columns={2}>
+                
+              </Grid.Row> */}
             </Grid>
           </Route>
           <Route path="/product/:id">
