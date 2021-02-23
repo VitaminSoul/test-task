@@ -3,6 +3,7 @@ const initState = {
   isReady: false,
   filteredBy: "all",
   searchBy: "",
+  currentPage: "",
 };
 
 export default (state = initState, action) => {
@@ -11,6 +12,7 @@ export default (state = initState, action) => {
       return {
         ...state,
         isReady: false,
+        data: [],
       };
     case "SET_DATA":
       return {
@@ -98,6 +100,12 @@ export default (state = initState, action) => {
         ),
       };
 
+    case "SET_PAGE":
+      return {
+        ...state,
+        currentPage: action.payload,
+        isReady: false,
+      };
     default:
       return state;
   }

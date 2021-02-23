@@ -15,6 +15,7 @@
     "lodash": "^4.17.20",
     "mongodb": "^3.6.4",
     "node-sass": "^5.0.0",
+    "nodemon": "^2.0.7",
     "pure-react-carousel": "^1.27.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -31,7 +32,7 @@
   "homepage": ".",
   "scripts": {
     "frontend": "react-scripts start",
-    "backend": "node src/server",
+    "backend": "nodemon src/server",
     "start": "concurrently \"yarn frontend\" \"yarn backend\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",

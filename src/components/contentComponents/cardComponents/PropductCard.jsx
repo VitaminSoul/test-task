@@ -12,14 +12,32 @@ export default class myCard extends Component {
     getImg(id);
   }
 
+  // componentDidUpdate() {
+  //   const { getImg, id } = this.props;
+  //   getImg(id);
+  // }
+
   handleAddToCart = () => {
     const { addToCart, id } = this.props;
     addToCart(id);
   };
 
   render() {
-    const { id, price, productName, productDescription, images } = this.props;
+    const {
+      isReady,
+      id,
+      price,
+      productName,
+      productDescription,
+      images,
+    } = this.props;
+
     const { imageRdy, productImage } = images.find((o) => o.id === id);
+    // ?
+    // : {
+    //     imageRdy: false,
+    //     productImage: productImage,
+    //   };
     return (
       <Card link>
         {imageRdy ? (

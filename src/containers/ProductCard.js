@@ -5,7 +5,7 @@ import ProductCard from "../components/contentComponents/cardComponents/Propduct
 import * as actions from "../actions/produtCard";
 
 const mapStateToProps = ({
-  appReducer: { data, imgData, likes, images },
+  appReducer: { data, imgData, likes, images, isReady },
   cartReducer: { cartItems },
 }) => {
   return {
@@ -14,6 +14,7 @@ const mapStateToProps = ({
     cartItems,
     likes,
     images,
+    isReady,
   };
 };
 
